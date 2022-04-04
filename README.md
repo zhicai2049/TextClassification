@@ -1,2 +1,2 @@
 # TextClassification
-Text classification based on Bert
+Text classification based on Bert.

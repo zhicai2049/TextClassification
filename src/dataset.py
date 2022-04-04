@@ -1,6 +1,6 @@
 from torch.utils.data import Dataset
 import torch
-from transformers import AutoTokenizer
+from transformers import BertTokenizer
 
 class EmotionDataset(Dataset):
     def __init__(self, paths, tokz, label_vocab, logger, max_lengths=2048):
@@ -60,9 +60,10 @@ if __name__ == '__main__':
             print(s)
 
     logger = Logger()
-    tokz = AutoTokenizer.from_pretrained("bert-base-chinese")
+    # tokz = AutoTokenizer.from_pretrained("bert-base-chinese")
     #
     # tokz = BertTokenizer.from_pretrained(bert_path)
+    tokz = BertTokenizer("D:\\githubWorkspace\\model\\bert\\vocab.txt")
     dataset = EmotionDataset([data_file], tokz, label_vocab, logger)
     pad = PadBatchSeq(tokz.pad_token_id)
     print(pad([dataset[i] for i in range(5)]))

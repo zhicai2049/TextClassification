@@ -3,7 +3,7 @@ import torch
 import os
 
 #
-from transformers import AutoTokenizer
+from transformers import BertTokenizer
 
 parser = argparse.ArgumentParser()
 # parser.add_argument('--bert_path', help='config file', default='/home/data/tmp/bert-base-chinese')
@@ -54,7 +54,9 @@ try:
     for i in vars(args):
         logger.info('{}: {}'.format(i, getattr(args, i)))
 
-    tokz = AutoTokenizer.from_pretrained("bert-base-chinese")
+    # tokz = AutoTokenizer.from_pretrained("bert-base-chinese")
+    tokz = BertTokenizer("D:\\githubWorkspace\\model\\bert\\vocab.txt")
+
 
     _, label2index, _ = utils.load_vocab(args.label_vocab)
     train_dataset = dataset.EmotionDataset([args.train_file], tokz, label2index, logger, max_lengths=args.max_length)
@@ -64,7 +66,7 @@ try:
 
     # bert_config = BertConfig.from_pretrained(args.bert_path)
     # bert_config.num_labels = 8
-    model = BertForSequenceClassification.from_pretrained("bert-base-chinese")
+    model = BertForSequenceClassification.from_pretrained("D:\\githubWorkspace\\model\\bert\\bert-base-chinese")
 
     trainer = ClsTrainer(args, model, tokz, train_dataset, valid_dataset, log_path, logger, device)
 

@@ -7,10 +7,10 @@ from transformers import AutoTokenizer
 
 parser = argparse.ArgumentParser()
 # parser.add_argument('--bert_path', help='config file', default='/home/data/tmp/bert-base-chinese')
-parser.add_argument('--save_path', help='training file', default='D:/tmp/NLP/TextClassification/train')
-parser.add_argument('--train_file', help='training file', default='/home/data/tmp/NLP_Course/TextBERT/data/train')
-parser.add_argument('--valid_file', help='valid file', default='/home/data/tmp/NLP_Course/TextBERT/data/test')
-parser.add_argument('--label_vocab', help='training file', default='/home/data/tmp/NLP_Course/TextBERT/data/label_vocab')
+parser.add_argument('--save_path', help='training file', default='D:\\githubWorkspace\\tmp\\textclassify')
+parser.add_argument('--train_file', help='training file', default='D:\\githubWorkspace\\data\\textclassify\\train')
+parser.add_argument('--valid_file', help='valid file', default='D:\\githubWorkspace\\data\\textclassify\\test')
+parser.add_argument('--label_vocab', help='training file', default='D:\\githubWorkspace\\data\\textclassify\\label_vocab')
 
 parser.add_argument('--lr', type=float, default=8e-6)
 parser.add_argument('--lr_warmup', type=float, default=200)

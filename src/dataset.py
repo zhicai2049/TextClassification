@@ -2,6 +2,7 @@ from torch.utils.data import Dataset
 import torch
 from transformers import BertTokenizer
 
+# 自定义数据集
 class EmotionDataset(Dataset):
     def __init__(self, paths, tokz, label_vocab, logger, max_lengths=2048):
         self.logger = logger
@@ -9,6 +10,7 @@ class EmotionDataset(Dataset):
         self.max_lengths = max_lengths
         self.data = EmotionDataset.make_dataset(paths, tokz, label_vocab, logger, max_lengths)
 
+    # 类方法
     @staticmethod
     def make_dataset(paths, tokz, label_vocab, logger, max_lengths):
         logger.info('reading data from {}'.format(paths))
@@ -26,6 +28,7 @@ class EmotionDataset(Dataset):
         logger.info('{} data record loaded'.format(len(dataset)))
         return dataset
 
+         #下面这两个方法必须写
     def __len__(self):
         return len(self.data)
 
